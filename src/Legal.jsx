@@ -5,8 +5,7 @@ const Legal = () => {
         © 2024 Block, Inc. BLOCK and the Block Logo are trademarks of Block, Inc.
       </span>{" "}
       <a
-        href="/legal"
-        rel="noreferrer noopener"
+        href="#legal"
         className="font-semibold border-b-[1.2px] border-black cursor-pointer ease-in transition-all hover:border-white hover:text-white"
       >
         Legal
