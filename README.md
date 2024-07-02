@@ -50,7 +50,7 @@ Using yarn:
   yarn dev
 ```
 
-4. Build para Producción:
+4. Build for Production:
 
 Using npm:
 
