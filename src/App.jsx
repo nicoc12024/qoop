@@ -72,40 +72,38 @@ function App() {
       {loading && (
         <FirstScreen fadeOutText={fadeOutText} fadeOutComplete={fadeOutComplete} />
       )}
-      {
-        <>
-          {/* Cube and background of the Home Page */}
-          <Cube
-            className="z-30"
-            isMotionClicked={isMotionClicked}
-            isColorClicked={isColorClicked}
-          />
-          {/* Home Page */}
-          <main
-            className={`z-10 fixed w-screen h-screen top-0 left-0 right-0 bottom-0 p-[24px] m-auto flex flex-col 
+
+      {/* Cube and background of the Home Page */}
+      <Cube
+        className="z-30"
+        isMotionClicked={isMotionClicked}
+        isColorClicked={isColorClicked}
+      />
+
+      {/* Home Page */}
+      <main
+        className={`z-10 fixed w-screen h-screen top-0 left-0 right-0 bottom-0 p-[24px] m-auto flex flex-col 
               justify-between gap-[24px] delay-1000 duration-1000 ease-in
               ${fadeOutComplete ? "opacity-100" : "opacity-0"}
             `}
-          >
-            {/* Top nav */}
-            <div className="md:pt-4 text-white flex md:flex-row flex-col justify-between md:items-start gap-[24px]">
-              <MusicCard />
-              <Navbar
-                isMotionClicked={isMotionClicked}
-                setIsMotionClicked={setIsMotionClicked}
-                isColorClicked={isColorClicked}
-                setIsColorClicked={setIsColorClicked}
-              />
-            </div>
+      >
+        {/* Header */}
+        <header className="md:pt-4 text-white flex md:flex-row flex-col justify-between md:items-start gap-[24px]">
+          <MusicCard />
+          <Navbar
+            isMotionClicked={isMotionClicked}
+            setIsMotionClicked={setIsMotionClicked}
+            isColorClicked={isColorClicked}
+            setIsColorClicked={setIsColorClicked}
+          />
+        </header>
 
-            {/* Bottom nav */}
-            <div className="pt-4 xl:pb-4 text-white flex md:flex-row flex-col justify-between md:items-end gap-[24px]">
-              <SecondaryNav />
-              <Legal />
-            </div>
-          </main>
-        </>
-      }
+        {/* Footer */}
+        <footer className="pt-4 xl:pb-4 text-white flex md:flex-row flex-col justify-between md:items-end gap-[24px]">
+          <SecondaryNav />
+          <Legal />
+        </footer>
+      </main>
     </div>
   );
 }
