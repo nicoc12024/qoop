@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.font-block {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.font-nav {
+  font-family: "Neue Machina";
+}
+
+body,
+html {
+  user-select: none;
+}
+
+@media screen and (min-width: 480px) {
+  .responsive-text {
+    --header-font-size: calc(16px + (32 - 16) * ((100vw - 480px) / (960 - 480)));
+    --paragraph-font-size: calc(12px + (24 - 12) * ((100vw - 480px) / (960 - 480)));
+    --paragraph-mt: calc(24px + (48 - 24) * ((100vw - 480px) / (960 - 480)));
+    --paragraph-mb: calc(64px + (128 - 64) * ((100vw - 480px) / (960 - 480)));
+  }
+
+  .responsive-text h3 {
+    font-size: var(--header-font-size);
+  }
+
+  .responsive-text p {
+    font-size: var(--paragraph-font-size);
+    margin-top: var(--paragraph-mt);
+    margin-bottom: var(--paragraph-mb);
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .responsive-text {
+    --header-font-size: calc(16px + (32 - 16) * ((100vw - 480px) / (960 - 480)));
+    --paragraph-font-size: calc(12px + (24 - 12) * ((100vw - 480px) / (960 - 480)));
+    --paragraph-mt: calc(24px + (48 - 24) * ((100vw - 480px) / (960 - 480)));
+    --paragraph-mb: calc(64px + (128 - 64) * ((100vw - 480px) / (960 - 480)));
+  }
+
+  .responsive-text h3 {
+    font-size: var(--header-font-size);
+  }
+
+  .responsive-text p {
+    font-size: var(--paragraph-font-size);
+    margin-top: var(--paragraph-mt);
+    margin-bottom: var(--paragraph-mb);
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .padding-modal {
+    padding: 40px;
+  }
+
+  .h3-modal {
+    font-size: calc(16px + (32 - 16) * ((100vw - 960px) / (1920 - 960)));
+  }
+
+  .p-modal {
+    font-size: calc(12px + (24 - 12) * ((100vw - 960px) / (1920 - 960)));
+    margin-top: 22px;
+    margin-bottom: 86px;
+    line-height: 150%;
+  }
+
+  .span-modal {
+    font-size: calc(12px + (24 - 12) * ((100vw - 960px) / (1920 - 960)));
+  }
+
+  .checkbox {
+    height: calc(12px + (32 - 12) * ((100vw - 960px) / (1920 - 960)));
+    width: calc(12px + (32 - 12) * ((100vw - 960px) / (1920 - 960)));
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .padding-modal {
+    padding: 24px;
+  }
+
+  .h3-modal {
+    font-size: 16px;
+  }
+
+  .p-modal {
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 64px;
+    line-height: 150%;
+  }
+
+  .span-modal {
+    font-size: 14px;
+  }
+}
+
+@font-face {
+  font-family: "Neue Machina";
+  src: url("https://db.onlinewebfonts.com/t/82b778d1b069157bf6b2e32dc4e1e3f1.eot");
+  src: url("https://db.onlinewebfonts.com/t/82b778d1b069157bf6b2e32dc4e1e3f1.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/82b778d1b069157bf6b2e32dc4e1e3f1.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/82b778d1b069157bf6b2e32dc4e1e3f1.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/82b778d1b069157bf6b2e32dc4e1e3f1.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/82b778d1b069157bf6b2e32dc4e1e3f1.svg#Neue Machina")
+      format("svg");
+}
+
+@font-face {
+  font-family: "Pilat Wide";
+  src: url("/fonts/PilatWide-Bold.eot");
+  src: local("Pilat Wide Bold"), local("PilatWide-Bold"),
+    url("/fonts/PilatWide-Bold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/PilatWide-Bold.woff2") format("woff2"),
+    url("/fonts/PilatWide-Bold.woff") format("woff"),
+    url("/fonts/PilatWide-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pilat Wide";
+  src: url("/fonts/PilatWide-Thin.eot");
+  src: local("Pilat Wide Thin"), local("PilatWide-Thin"),
+    url("/fonts/PilatWide-Thin.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/PilatWide-Thin.woff2") format("woff2"),
+    url("/fonts/PilatWide-Thin.woff") format("woff"),
+    url("/fonts/PilatWide-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pilat Wide";
+  src: url("/fonts/PilatWide-DemiBold.eot");
+  src: local("Pilat Wide DemiBold"), local("PilatWide-DemiBold"),
+    url("/fonts/PilatWide-DemiBold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/PilatWide-DemiBold.woff2") format("woff2"),
+    url("/fonts/PilatWide-DemiBold.woff") format("woff"),
+    url("/fonts/PilatWide-DemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pilat Wide";
+  src: url("/fonts/PilatWide-Book.eot");
+  src: local("Pilat Wide Book"), local("PilatWide-Book"),
+    url("/fonts/PilatWide-Book.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/PilatWide-Book.woff2") format("woff2"),
+    url("/fonts/PilatWide-Book.woff") format("woff"),
+    url("/fonts/PilatWide-Book.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pilat Wide";
+  src: url("/fonts/PilatWide-Regular.eot");
+  src: local("Pilat Wide Regular"), local("PilatWide-Regular"),
+    url("/fonts/PilatWide-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/PilatWide-Regular.woff2") format("woff2"),
+    url("/fonts/PilatWide-Regular.woff") format("woff"),
+    url("/fonts/PilatWide-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pilat Wide";
+  src: url("/fonts/PilatWide-Black.eot");
+  src: local("Pilat Wide Black"), local("PilatWide-Black"),
+    url("/fonts/PilatWide-Black.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/PilatWide-Black.woff2") format("woff2"),
+    url("/fonts/PilatWide-Black.woff") format("woff"),
+    url("/fonts/PilatWide-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pilat Wide";
+  src: url("/fonts/PilatWide-Heavy.eot");
+  src: local("Pilat Wide Heavy"), local("PilatWide-Heavy"),
+    url("/fonts/PilatWide-Heavy.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/PilatWide-Heavy.woff2") format("woff2"),
+    url("/fonts/PilatWide-Heavy.woff") format("woff"),
+    url("/fonts/PilatWide-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pilat Wide";
+  src: url("/fonts/PilatWide-Light.eot");
+  src: local("Pilat Wide Light"), local("PilatWide-Light"),
+    url("/fonts/PilatWide-Light.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/PilatWide-Light.woff2") format("woff2"),
+    url("/fonts/PilatWide-Light.woff") format("woff"),
+    url("/fonts/PilatWide-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
