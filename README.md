@@ -19,7 +19,7 @@ Make sure you have the following installed on your system:
 
    ```sh
    git clone https://github.com/nicoc12024/qoop.git
-   cd your-repo-name
+   cd qoop
    ```
 
 2. Install the dependencies:
