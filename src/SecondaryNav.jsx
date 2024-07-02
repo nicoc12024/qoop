@@ -1,5 +1,3 @@
-import "./index.css"; // Asegúrate de importar el archivo CSS global
-
 const SecondaryNav = () => {
   return (
     <div className="flex flex-col xl:flex-row xl:gap-6 gap-4 text-black">

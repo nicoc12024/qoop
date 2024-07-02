@@ -7,15 +7,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 .font-block {
   font-family: "Times New Roman", Times, serif;
@@ -28,44 +19,6 @@
 body,
 html {
   user-select: none;
-}
-
-@media screen and (min-width: 480px) {
-  .responsive-text {
-    --header-font-size: calc(16px + (32 - 16) * ((100vw - 480px) / (960 - 480)));
-    --paragraph-font-size: calc(12px + (24 - 12) * ((100vw - 480px) / (960 - 480)));
-    --paragraph-mt: calc(24px + (48 - 24) * ((100vw - 480px) / (960 - 480)));
-    --paragraph-mb: calc(64px + (128 - 64) * ((100vw - 480px) / (960 - 480)));
-  }
-
-  .responsive-text h3 {
-    font-size: var(--header-font-size);
-  }
-
-  .responsive-text p {
-    font-size: var(--paragraph-font-size);
-    margin-top: var(--paragraph-mt);
-    margin-bottom: var(--paragraph-mb);
-  }
-}
-
-@media screen and (min-width: 480px) {
-  .responsive-text {
-    --header-font-size: calc(16px + (32 - 16) * ((100vw - 480px) / (960 - 480)));
-    --paragraph-font-size: calc(12px + (24 - 12) * ((100vw - 480px) / (960 - 480)));
-    --paragraph-mt: calc(24px + (48 - 24) * ((100vw - 480px) / (960 - 480)));
-    --paragraph-mb: calc(64px + (128 - 64) * ((100vw - 480px) / (960 - 480)));
-  }
-
-  .responsive-text h3 {
-    font-size: var(--header-font-size);
-  }
-
-  .responsive-text p {
-    font-size: var(--paragraph-font-size);
-    margin-top: var(--paragraph-mt);
-    margin-bottom: var(--paragraph-mb);
-  }
 }
 
 @media screen and (min-width: 480px) {

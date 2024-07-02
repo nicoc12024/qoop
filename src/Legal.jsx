@@ -1,5 +1,3 @@
-import "./index.css"; // Asegúrate de importar el archivo CSS global
-
 const Legal = () => {
   return (
     <div className="font-pilat xl:max-w-full md:max-w-[260px] text-black md:pr-0 pr-[30px] text-[10px]">

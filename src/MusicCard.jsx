@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
+import { TailSpin } from "react-loader-spinner";
 
 const fetchTracks = async () => {
-  // Simula un retraso en la llamada API
+  // Simulate a delay in the API call
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve([
@@ -29,8 +30,8 @@ const MusicCard = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isInitialPlay, setIsInitialPlay] = useState(true);
   const [currentTrack, setCurrentTrack] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); // Nuevo estado para manejar la carga
-  const [isLogoHovered, setIsLogoHovered] = useState(false); // Nuevo estado para manejar el hover del logo
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
   const audioRef = useRef(new Audio());
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const MusicCard = () => {
       const randomTrack = fetchedTracks[Math.floor(Math.random() * fetchedTracks.length)];
       setCurrentTrack(randomTrack);
       audioRef.current.src = randomTrack.url;
-      setIsLoading(false); // Termina el estado de carga
+      setIsLoading(false);
     };
 
     getTracks();
@@ -64,8 +65,16 @@ const MusicCard = () => {
   return (
     <div className="min-w-[290px] flex items-center justify-between border rounded-full border-black bg-transparent">
       <div className="cursor-pointer rounded-l-full w-full hover:bg-[#FFFEFF] ease-in transition-all pl-5 flex h-[56px] items-center justify-between border-black bg-transparent">
+        {/* Loading Spinner */}
         {isLoading ? (
-          <p className="text-black font-bold text-[11px] leading-3 font-pilat">loading</p>
+          <TailSpin
+            visible={true}
+            height="24"
+            width="24"
+            color="black"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+          />
         ) : (
           <>
             {/* First Play */}
@@ -97,6 +106,7 @@ const MusicCard = () => {
               </div>
             )}
 
+            {/* Logo listening */}
             {isPlaying && currentTrack && (
               <div className="flex items-center justify-center">
                 <button
@@ -119,6 +129,7 @@ const MusicCard = () => {
               </div>
             )}
 
+            {/* Logo no listening */}
             {!isPlaying && !isInitialPlay && currentTrack && (
               <div className="flex items-center justify-center">
                 <button
@@ -143,7 +154,7 @@ const MusicCard = () => {
           </>
         )}
       </div>
-      {/* LOGO */}
+      {/* LOGO: to Music Website */}
       <div
         className="cursor-pointer rounded-r-full hover:bg-[#FFFEFF] ease-in transition-all flex items-center pr-5 pl-4 py-[16px] border-l border-black"
         onMouseEnter={() => setIsLogoHovered(true)}

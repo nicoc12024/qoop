@@ -7,9 +7,16 @@ import Navbar from "./Navbar";
 import FirstScreen from "./FirstScreen";
 
 function App() {
+  // State to manage the loading state of the page
   const [loading, setLoading] = useState(true);
+
+  // State to manage the fade-out text effect on the loading screen
   const [fadeOutText, setFadeOutText] = useState(false);
+
+  // State to manage the completion of the fade-out effect on the loading screen
   const [fadeOutComplete, setFadeOutComplete] = useState(false);
+
+  // State to manage if the motion option has been clicked, saved in localStorage
   const [isMotionClicked, setIsMotionClicked] = useState(() => {
     const saved = localStorage.getItem("isMotionClicked");
     if (saved !== null) {
@@ -22,6 +29,8 @@ function App() {
     }
     return false;
   });
+
+  // State to manage if the color option has been clicked, saved in localStorage
   const [isColorClicked, setIsColorClicked] = useState(() => {
     const saved = localStorage.getItem("isColorClicked");
     if (saved !== null) {
@@ -35,6 +44,7 @@ function App() {
     return false;
   });
 
+  // useEffect to handle the fade-out timers and loading screen
   useEffect(() => {
     const timer1 = setTimeout(() => {
       setFadeOutText(true);
@@ -48,6 +58,7 @@ function App() {
       setLoading(false);
     }, 2200);
 
+    // Clear timers when the component unmounts
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
@@ -57,23 +68,26 @@ function App() {
 
   return (
     <div className="overflow-x-hidden relative h-screen">
+      {/* First white loading screen before the Home Page */}
       {loading && (
         <FirstScreen fadeOutText={fadeOutText} fadeOutComplete={fadeOutComplete} />
       )}
       {
-        <div>
+        <>
+          {/* Cube and background of the Home Page */}
           <Cube
             className="z-30"
             isMotionClicked={isMotionClicked}
             isColorClicked={isColorClicked}
           />
-          <div
+          {/* Home Page */}
+          <main
             className={`z-10 fixed w-screen h-screen top-0 left-0 right-0 bottom-0 p-[24px] m-auto flex flex-col 
               justify-between gap-[24px] delay-1000 duration-1000 ease-in
               ${fadeOutComplete ? "opacity-100" : "opacity-0"}
             `}
           >
-            {/* NAV TOP */}
+            {/* Top nav */}
             <div className="md:pt-4 text-white flex md:flex-row flex-col justify-between md:items-start gap-[24px]">
               <MusicCard />
               <Navbar
@@ -84,13 +98,13 @@ function App() {
               />
             </div>
 
-            {/* NAV BOTTOM */}
+            {/* Bottom nav */}
             <div className="pt-4 xl:pb-4 text-white flex md:flex-row flex-col justify-between md:items-end gap-[24px]">
               <SecondaryNav />
               <Legal />
             </div>
-          </div>
-        </div>
+          </main>
+        </>
       }
     </div>
   );

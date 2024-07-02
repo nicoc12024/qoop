@@ -15,7 +15,7 @@ const Cube = ({ isMotionClicked, isColorClicked }) => {
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
-    // Crear la escena, la cámara y el renderizador
+    // Create the scene, camera, and renderer
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -27,25 +27,40 @@ const Cube = ({ isMotionClicked, isColorClicked }) => {
     renderer.setSize(mount.clientWidth, mount.clientHeight);
     mount.appendChild(renderer.domElement);
 
-    // Crear una esfera de fondo con un gradiente animado
+    // Adjust the camera position based on screen width
+    const adjustCameraPosition = () => {
+      if (window.innerWidth > 480) {
+        camera.position.z = 2;
+      } else {
+        camera.position.z = 3;
+      }
+    };
+
+    // Initial camera position adjustment
+    adjustCameraPosition();
+
+    // Listen for window resize events
+    window.addEventListener("resize", adjustCameraPosition);
+
+    // Create a background sphere with an animated gradient
     const sphereGeometry = new THREE.SphereGeometry(100, 64, 64);
     const sphereMaterial = new THREE.MeshBasicMaterial({ side: THREE.BackSide });
 
-    // Crear el gradiente
+    // Create the gradient
     const gradientCanvas = document.createElement("canvas");
     gradientCanvas.width = 1024;
     gradientCanvas.height = 512;
     const ctx = gradientCanvas.getContext("2d");
 
     if (isColorClicked) {
-      // Fondo blanco, rosa clarito y gris
+      // White, light pink, and gray background
       const gradient = ctx.createLinearGradient(0, 0, 1024, 512);
-      gradient.addColorStop(0, "#ffffff"); // Blanco
-      gradient.addColorStop(0.5, "#ffc0cb"); // Rosa clarito
-      gradient.addColorStop(1, "#d3d3d3"); // Gris
+      gradient.addColorStop(0, "#ffffff"); // White
+      gradient.addColorStop(0.5, "#ffc0cb"); // Light pink
+      gradient.addColorStop(1, "#d3d3d3"); // Gray
       ctx.fillStyle = gradient;
     } else {
-      // Fondo original
+      // Original background
       const gradient = ctx.createLinearGradient(0, 0, 1024, 512);
       gradient.addColorStop(0, "#ffeaaf");
       gradient.addColorStop(0.1, "#ffe499");
@@ -70,7 +85,7 @@ const Cube = ({ isMotionClicked, isColorClicked }) => {
     const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
     scene.add(sphere);
 
-    // Crear el cubo con colores distintos en cada cara
+    // Create the cube with different colors on each face
     const geometry = new THREE.BoxGeometry();
     const materials = isColorClicked
       ? [
@@ -82,26 +97,24 @@ const Cube = ({ isMotionClicked, isColorClicked }) => {
           new THREE.MeshBasicMaterial({ color: 0x008b8b }), // DarkCyan
         ]
       : [
-          new THREE.MeshBasicMaterial({ color: 0xff0000 }), // Rojo
-          new THREE.MeshBasicMaterial({ color: 0x00ff00 }), // Verde
-          new THREE.MeshBasicMaterial({ color: 0x0000ff }), // Azul
-          new THREE.MeshBasicMaterial({ color: 0xffff00 }), // Amarillo
+          new THREE.MeshBasicMaterial({ color: 0xff0000 }), // Red
+          new THREE.MeshBasicMaterial({ color: 0x00ff00 }), // Green
+          new THREE.MeshBasicMaterial({ color: 0x0000ff }), // Blue
+          new THREE.MeshBasicMaterial({ color: 0xffff00 }), // Yellow
           new THREE.MeshBasicMaterial({ color: 0xff00ff }), // Magenta
-          new THREE.MeshBasicMaterial({ color: 0x00ffff }), // Cian
+          new THREE.MeshBasicMaterial({ color: 0x00ffff }), // Cyan
         ];
 
     const cube = new THREE.Mesh(geometry, materials);
     scene.add(cube);
 
-    // Ajustar la posición de la cámara
-    camera.position.z = 2;
     camera.lookAt(0, 0, 0);
 
-    // Función de animación
+    // Animation function
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // Aplicar la rotación continua al cubo y a la esfera si isMotionClicked es false
+      // Apply continuous rotation to the cube and sphere if isMotionClicked is false
       if (!isMotionClicked) {
         cube.rotation.x += rotationVelocity.x;
         cube.rotation.y += rotationVelocity.y;
@@ -109,7 +122,7 @@ const Cube = ({ isMotionClicked, isColorClicked }) => {
         sphere.rotation.y += backgroundRotationVelocity.y;
       }
 
-      // Aplicar rotación adicional cuando se arrastra el mouse
+      // Apply additional rotation when dragging the mouse
       if (isDragging) {
         cube.rotation.x += additionalRotation.x;
         cube.rotation.y += additionalRotation.y;
@@ -117,17 +130,17 @@ const Cube = ({ isMotionClicked, isColorClicked }) => {
         sphere.rotation.y += additionalRotation.y * 0.1;
       }
 
-      // Reducir gradualmente la rotación adicional
+      // Gradually reduce the additional rotation
       additionalRotation.x *= 0.95;
       additionalRotation.y *= 0.95;
 
-      // Actualizar el raycaster y detectar intersecciones
+      // Update the raycaster and detect intersections
       raycaster.setFromCamera(mouse, camera);
       const intersects = raycaster.intersectObject(cube);
       if (intersects.length > 0 || isCubeClicked) {
-        mount.style.cursor = isDragging ? "grabbing" : "grab"; // Cambiar el cursor a 'grabbing' cuando arrastramos
+        mount.style.cursor = isDragging ? "grabbing" : "grab"; // Change the cursor to 'grabbing' when dragging
       } else {
-        mount.style.cursor = "default"; // Restaurar el cursor predeterminado cuando el mouse no esté sobre el cubo
+        mount.style.cursor = "default"; // Restore the default cursor when the mouse is not over the cube
       }
 
       renderer.render(scene, camera);
@@ -135,13 +148,13 @@ const Cube = ({ isMotionClicked, isColorClicked }) => {
 
     animate();
 
-    // Manejar el evento de movimiento del mouse para rotar el cubo y la esfera
+    // Handle the mouse move event to rotate the cube and sphere
     const onMouseMove = (event) => {
       if (isDragging) {
         const deltaX = event.clientX - previousMousePosition.x;
         const deltaY = event.clientY - previousMousePosition.y;
 
-        // Calcular la rotación adicional
+        // Calculate the additional rotation
         additionalRotation = {
           x: deltaY * 0.005,
           y: deltaX * 0.005,
@@ -151,7 +164,7 @@ const Cube = ({ isMotionClicked, isColorClicked }) => {
         previousMousePosition.y = event.clientY;
       }
 
-      // Actualizar la posición del mouse para el raycaster
+      // Update the mouse position for the raycaster
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     };
@@ -176,8 +189,9 @@ const Cube = ({ isMotionClicked, isColorClicked }) => {
     window.addEventListener("mousedown", onMouseDown);
     window.addEventListener("mouseup", onMouseUp);
 
-    // Limpiar al desmontar el componente
+    // Clean up when the component unmounts
     return () => {
+      window.removeEventListener("resize", adjustCameraPosition);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mouseup", onMouseUp);

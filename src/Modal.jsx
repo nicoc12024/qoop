@@ -1,6 +1,5 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import "./index.css"; // Asegúrate de importar el archivo de estilos
 
 export default function Modal({
   open,
@@ -57,11 +56,13 @@ export default function Modal({
                 Use the controls below to customize your web experience.
               </p>
             </div>
+
+            {/* Reduce Color */}
             <div className="flex flex-row justify-between">
-              {/* Reduce Color */}
               <span className="span-modal font-pilat font-[500] leading-4">
                 Reduce color
               </span>
+              {/* Checkbox */}
               {isColorClicked ? (
                 <div className="cursor-pointer checkbox px-4" onClick={handleReduceColor}>
                   <svg
@@ -105,6 +106,7 @@ export default function Modal({
                 </div>
               )}
             </div>
+
             {/* Divider */}
             <hr className="my-6 border-gray-500 border-[1.1px]" />
 
@@ -113,6 +115,7 @@ export default function Modal({
               <span className="span-modal font-pilat font-[500] leading-4">
                 Reduce motion
               </span>
+              {/* Checkbox */}
               {isMotionClicked ? (
                 <div
                   className="cursor-pointer checkbox px-4"
