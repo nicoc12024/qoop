@@ -18,7 +18,7 @@ Make sure you have the following installed on your system:
 1. Clone the repository to your local machine:
 
    ```sh
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/nicoc12024/qoop.git
    cd your-repo-name
    ```
 
