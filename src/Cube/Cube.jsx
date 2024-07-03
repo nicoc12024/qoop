@@ -97,7 +97,7 @@ const Cube = ({ isMotionClicked, isColorClicked }) => {
     camera.lookAt(0, 0, 0);
 
     let morphTarget = 0;
-    let morphDirection = 2;
+    let morphDirection = 1;
     const morphSpeed = 0.003;
 
     const animate = () => {
