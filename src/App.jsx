@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import SecondaryNav from "./SecondaryNav";
-import Cube from "./Cube";
+import Cube from "./Cube/Cube";
 import Legal from "./Legal";
 import MusicCard from "./MusicCard";
 import Navbar from "./Navbar";
@@ -72,14 +72,12 @@ function App() {
       {loading && (
         <FirstScreen fadeOutText={fadeOutText} fadeOutComplete={fadeOutComplete} />
       )}
-
       {/* Cube and background of the Home Page */}
       <Cube
-        className="z-30"
+        className="absolute top-0! left-0 right-0 bottom-0 z-20"
         isMotionClicked={isMotionClicked}
         isColorClicked={isColorClicked}
       />
-
       {/* Home Page */}
       <main
         className={`z-10 fixed w-screen h-screen top-0 left-0 right-0 bottom-0 p-[24px] m-auto flex flex-col 
@@ -97,7 +95,6 @@ function App() {
             setIsColorClicked={setIsColorClicked}
           />
         </header>
-
         {/* Footer */}
         <footer className="pt-4 xl:pb-4 text-white flex md:flex-row flex-col justify-between md:items-end gap-[24px]">
           <SecondaryNav />
